@@ -9,7 +9,7 @@ Bonus treat is that I also found out you can remove the logo.
 
 Feel free to add on and pull request. This is super bare bones and could be extended to a few other websites. 
 
-INSTALLATION
+##INSTALLATION
 
   Installing it in Chrome:
   - git clone https://github.com/waldmannly/FunimationBingeWatchHelper.git my-project-name
