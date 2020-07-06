@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Funimation Binge Watch Helper Options</title>
+</head>
+<body>
+	<h1>Funimation Binge Watch Helper </h1>
+	<label>
+		<input type="number" id="pollingInt" step="100">
+		Polling interval (in miliseconds) [how many miliseconds between time checks and setting updates]
+	</label>
+	<br /><br />
+	<label>
+		<input type="number" id="introInt" step="0.1">
+		Time to skip in intro (minutes)
+	</label>
+	<br /><br />
+	<label>
+		<input type="number" id="jumpInt" step="0.1">
+		Time to jump to next episode (minutes)
+	</label>
+	<br /><br />
+	<label>
+		<input type="checkbox" id="hideLogo">
+		Hide Funimation Logo?
+	</label>
+	<br /><br />
+	<label>
+		<input type="checkbox" id="hideTime">
+		time output in console?  
+	</label>
+	<div id="status"></div>
+	<button id="save">Save</button>
+
+	<script src="options.js"></script>
+</body>
+</html>
