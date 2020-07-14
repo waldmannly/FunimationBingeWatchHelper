@@ -5,12 +5,14 @@ function save_options() {
     var jump = document.getElementById('jumpInt').value;
     var hide = document.getElementById('hideLogo').checked;
     var time = document.getElementById('hideTime').checked;
+    //var full = false; //document.getElementById('autoFull').checked;
     chrome.storage.sync.set({
         pollingInt: poll,
         introInt: intro,
         jumpInt: jump, 
         hideLogo: hide,
-        hideTime: time 
+        hideTime: time
+        //autoFull: full
     }, function () {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
@@ -31,12 +33,14 @@ function restore_options() {
         jumpInt: 22.5, 
         hideLogo: true, 
         hideTime: true
+        //autoFull: false
     }, function (items) {
             document.getElementById('pollingInt').value = items.pollingInt;
             document.getElementById('introInt').value = items.introInt;
             document.getElementById('jumpInt').value = items.jumpInt;
             document.getElementById('hideLogo').checked = items.hideLogo;
             document.getElementById('hideTime').checked = items.hideTime;
+            //document.getElementById('autoFull').checked = items.autoFull;
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);

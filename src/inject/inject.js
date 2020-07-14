@@ -1,58 +1,100 @@
 chrome.extension.sendMessage({}, function (response) {
 
-	var readyStateCheckInterval = setInterval(function (){
-		if (document.readyState === "complete") {
-			clearInterval(readyStateCheckInterval);
+	var first = true; 
 
-			chrome.storage.sync.get({
-				pollingInt: 5000,
+	var readyStateCheckInterval = setInterval(function () {
+		console.log("here"); 
+		if (document.readyState === "complete") {
+			if (window.location.href.indexOf('youtube') > 0) { 
+				var elements = document.getElementsByClassName("ytp-ad-skip-button");
+				if (elements.length > 0) {
+					console.log("attempting to skip youtube ad")
+					console.log(elements[0].click());
+				}
+			}
+			clearInterval(readyStateCheckInterval);
+			
+			var name = chrome.storage.sync.get({
+				pollingInt: 1500,
 				introInt: 3,
 				jumpInt: 22.5,
 				hideLogo: true,
 				hideTime: true
+				//autoFull: false
 			}, function (items) {
 				pollingInt = items.pollingInt;
 				introInt = items.introInt;
 				jumpInt = items.jumpInt;
 				hideLogo = items.hideLogo; 
 				hideTime = items.hideTime; 
-		
-				var test = setInterval(function (){
+				//autoFull = items.autoFull; 
+				if (window.location.href.indexOf('youtube') > 0 && document) {
+					var elements = document.getElementsByClassName("ytp-ad-skip-button");
+					if (elements.length>0) {
+						console.log("attempting to skip youtube ad")
+						console.log(elements[0].click());
+					}
+				}
+				
+				var test = setInterval(function () {
+
+					if (document && document.getElementById("player") == null) return;
 					chrome.storage.sync.get({
 						pollingInt: 5000,
 						introInt: 3,
 						jumpInt: 22.5,
 						hideLogo: true, 
 						hideTime: true
+						//autoFull: false 
 					}, function (items) {
 							pollingInt = items.pollingInt;
 							introInt = items.introInt;
 							jumpInt = items.jumpInt;
+							hideLogo = items.hideLogo;
 							hideTime = items.hideTime;
+							//autoFull = items.autoFull; 
 					});
 
-					if (document.getElementById("player") == null) return;
-					curTime = document.getElementById("player").contentWindow.document.getElementById("brightcove-player_html5_api").currentTime / 60
+					if (window.location.href.indexOf('youtube') > 0 && document) {
+						var elements = document.getElementsByClassName("ytp-ad-skip-button");
+						if (elements.length > 0) {
+							console.log("attempting to skip youtube ad")
+							console.log(elements[0].click());
+						}
+						return; 
+					}
+					curTime = document.getElementById("player").contentWindow.document.getElementById("brightcove-player_html5_api").currentTime / 60;
 					if (curTime < introInt) {
-						maxPress = Math.ceil(introInt * 60 - curTime * 60) / 10.0
+						//if (autoFull && first) {
+						//	document.getElementById("player").contentWindow.document.getElementById("funimation-control-fullscreen").click();
+						//	first = false;
+						//}
+						maxPress = Math.ceil(introInt * 60 - curTime * 60) / 10.0;
 						console.log(maxPress)
 						for (var i = 0; i < maxPress; i++) {
-							document.getElementById("player").contentWindow.document.getElementById("funimation-control-forward").click()
-							console.log("Press")
+							document.getElementById("player").contentWindow.document.getElementById("funimation-control-forward").click();
+							console.log("Press");
 						}
+
 					}
 
+					//if (autoFull && first) {
+					//	document.getElementById("player").contentWindow.document.getElementById("funimation-control-fullscreen").click();
+					//	first = false;
+					//}
+
 					if (!hideTime) {
-						console.log(curTime)
+						console.log(curTime);
 					}
 
 					if (curTime > jumpInt) {
-						document.getElementById("player").contentWindow.document.getElementById("funimation-control-next").click()
+						document.getElementById("player").contentWindow.document.getElementById("funimation-control-next").click();
 					}
 
 					if (hideLogo) {
-						document.getElementById("player").contentWindow.document.getElementById("funimation-logo").style.display = "None"
+						document.getElementById("player").contentWindow.document.getElementById("funimation-logo").style.display = "None";
 					}
+
 
 				}, pollingInt);
 			});
