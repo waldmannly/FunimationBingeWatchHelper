@@ -6,7 +6,7 @@ You can change the amount of time that is skipped in the intro and the time when
 
 Bonus treat is that I also found out you can remove the logo. 
 
-**7-13-2020 now include a feature to skip youtube adds automatically as well -- might decouple the two features in the future**
+**7-13-2020 now includes a feature to skip youtube ads automatically as well -- might decouple the two features in the future**
 
 Feel free to add on and pull request. This is super bare bones and could be extended to a few other websites. 
 
