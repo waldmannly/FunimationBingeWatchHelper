@@ -7,6 +7,7 @@ You can change the amount of time that is skipped in the intro and the time when
 Bonus treat is that I also found out you can remove the logo. 
 
 **7-13-2020 now includes a feature to skip youtube ads automatically as well -- might decouple the two features in the future**
+**8-16-2020 decoupled the two features. added extra options. made fullscreen work as well as it can in funimation. added ability to turn off the each of the skippers (youtube/funimation)**
 
 Feel free to add on and pull request. This is super bare bones and could be extended to a few other websites. 
 
