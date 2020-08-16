@@ -1,6 +1,6 @@
 {
   "name": "Funimation Binge Watch Helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Skip intros on Funimation and skip to next episode at set times (via options in the extension). ",
   "homepage_url": "https://github.com/waldmannly/FunimationBingeWatchHelper",

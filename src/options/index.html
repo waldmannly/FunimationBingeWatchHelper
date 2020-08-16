@@ -4,9 +4,27 @@
 	<title>Funimation Binge Watch Helper Options</title>
 </head>
 <body>
+	<h1>Funimation Binge Watch Helper - youtube ad skipper </h1>
+	<label>
+		<input type="checkbox" id="youtubeSkip">
+		Enable youtube ad skipping?
+	</label>
+	<br /><br />
+	<label>
+		<input type="number" id="youtubePollingInt" step="100">
+		Polling interval (in miliseconds) [how many miliseconds between time checks and setting updates]
+	</label>
+
+	<br /><br />
+
 	<h1>Funimation Binge Watch Helper </h1>
 	<label>
-		<input type="number" id="pollingInt" step="100">
+		<input type="checkbox" id="funimationSkip">
+		Enable funimation skipping?
+	</label>
+	<br /><br />
+	<label>
+		<input type="number" id="funimationPollingInt" step="100">
 		Polling interval (in miliseconds) [how many miliseconds between time checks and setting updates]
 	</label>
 	<br /><br />
@@ -19,11 +37,11 @@
 		<input type="number" id="jumpInt" step="0.1">
 		Time to jump to next episode (minutes)
 	</label>
-	<!--<br /><br />
+	<br /><br />
 	<label>
 		<input type="checkbox" id="autoFull">
-		Auto Full Screen?
-	</label>-->
+		Auto Full Screen? [will require clicking the funimation window for it to be active]
+	</label>
 	<br /><br />
 	<label>
 		<input type="checkbox" id="hideLogo">
